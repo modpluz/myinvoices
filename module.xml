@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+<name>My Invoices</name>
+<version>1.1.0</version>
+<defaultcat>Account Information</defaultcat>
+<type>user</type>
+<desc>Manage your invoices with this module.</desc>
+<authorname>Aderemi Adewale (modpluz @ ZPanel Forums)</authorname>
+<authoremail>goremmy@gmail.com</authoremail>
+<authorurl>http://www.remmy.me/</authorurl>
+<updateurl>http://zpx.imerlabs.com/myinvoice.zpp</updateurl>
+</module>

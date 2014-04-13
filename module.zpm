@@ -1,0 +1,75 @@
+<@ Init @>
+<div class="zmodule_content panel" id="zmodule_header_<@ ModuleName @>">
+    <div class="panel-heading">
+        <img src="<@ ModuleIcon @>" width="35" height="35" border="0" alt="<@ ModuleName @>">
+
+        <div class="zmodule_title">
+            <@ ModuleName @>
+        </div>
+
+        <div class="zmodule_desc" id="zmodule_desc_<@ ModuleName @>"><@ ModuleDesc @></div>
+        <div class="module-version"><@ ModuleVersion @></div>
+    </div>
+    <!-- START - Check for updates added by TGates -->
+        <% if CheckUpdate %>
+            <table class="zgrid">
+                <tr>
+                      <div class="module-updated"><b><: New Version Available :></div>
+                </tr>
+            </table>
+        <% endif %>
+    <!-- END - Check for updates added by TGates -->
+
+    <div class="zform_wrapper">
+<% if isModuleInstalled %>
+
+<@ Result @>
+
+   <div class="zgrid_wrapper">
+        <!-- <h2><: My Invoices :></h2> -->
+        <% if OrdersInvoices %>
+        <form action="./?module=xinvoice" method="post" id="frmOrders">
+            <table class="table table-stripped table-bordered">
+                <tr>
+                    <th><: Invoice # :></th>
+                    <th><: Date :></th>
+                    <th><: Total Amount :></th>
+                    <th><: Description :></th>
+                    <th><: Status :></th>
+                    <th></th>
+                </tr>
+                <% loop OrdersInvoices %>
+                <tr>
+                    <td><& order_no &></td>
+                    <td><& order_date &></td>
+                    <td><& order_amount &> <@ Currency @></td>
+                    <td><& order_desc &></td>
+                    <td><& order_status &></td>
+                    <td><& button &></td>
+                </tr>			
+                <% endloop %>
+            </table>
+            <!-- <input type="hidden" id="item_id" name="order_id" value="0"> -->
+            <@ CSFR_Tag @>
+        </form>
+        <% else %>
+        <div class="text-center">
+        	<: You currently do not have any invoices to be displayed at this time. :>
+       	</div>
+        <% endif %>
+    </div>
+<% else %>
+    <p>&nbsp;</p>
+    <div align="center" class="alert alert-danger">
+        <: xBilling module is not installed! :>
+    </div>
+    <p>&nbsp;</p>
+<% endif %>
+    </div>
+    
+    
+</div>
+<script>
+	var billing_url = '<@ BillingURL @>';
+</script>
+
